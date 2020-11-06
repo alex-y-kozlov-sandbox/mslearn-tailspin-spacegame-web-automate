@@ -110,7 +110,7 @@ stages:
         ConnectedServiceName: 'az-rm-devops-node-app-05-yk-rg'
         subscriptionName: '$(subscription)'
         action: 'Create Or Update Resource Group'
-        resourceGroupName: 'tailspin-spacegame-web-rg'
+        resourceGroupName: 'devops-node-app-05-yk-rg'
         location: '$(location)'
         templateLocation: 'Linked artifact'
         csmFile: 'template.json'

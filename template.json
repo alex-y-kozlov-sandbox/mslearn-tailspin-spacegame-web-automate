@@ -44,7 +44,7 @@
           "kind": "v12.0",
           "properties": {
               "administratorLogin": "azuresql",
-              "administratorLoginPassword": "[parameters('adminPassword')]",
+              "administratorLoginPassword": "P@ssword",
               "version": "12.0"
           }
       },

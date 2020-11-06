@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "deployPrefix": {
+          "value": "-dev-"
+      },
+      "keyVaultName": {
+        "value": "msl-kv-02-yk"
+      },
+      "uniqueSuffix": {
+          "value": "-07-yk"
+      },
+      "adminPassword": {
+          "reference": {
+            "keyVault": {
+              "id": "/subscriptions/a9684ba4-61f2-4e72-b44e-126d096dd8a3/resourceGroups/devops-node-app-05-yk-rg/providers/#Microsoft.KeyVault/vaults/msl-kv-02-yk"
+            },
+            "secretName": "adminPassword"
+          }
+      },
+      "firstRun": {
+          "reference": {
+              "keyVault": {
+                  "id": "/subscriptions/a9684ba4-61f2-4e72-b44e-126d096dd8a3/resourceGroups/devops-node-app-05-yk-rg/providers/#Microsoft.KeyVault/vaults/msl-kv-02-yk"
+              },
+              "secretName": "firstRun"
+          }
+      }
+  }
+}

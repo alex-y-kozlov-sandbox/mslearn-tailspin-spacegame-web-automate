@@ -107,7 +107,7 @@ stages:
     - task: AzureResourceManagerTemplateDeployment@3
       inputs:
         deploymentScope: 'Resource Group'
-        ConnectedServiceName: 'Resource Manager - Tailspin - Space Game'
+        ConnectedServiceName: 'az-rm-devops-node-app-05-yk-rg'
         subscriptionName: '$(subscription)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: 'tailspin-spacegame-web-rg'
@@ -134,7 +134,7 @@ stages:
           steps: 
           - task: AzureKeyVault@1
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               keyVaultName: '$(keyVaultName)'
               secretsFilter: '*'
           - download: current
@@ -143,7 +143,7 @@ stages:
           - task: SqlAzureDacpacDeployment@1
             displayName: Generate schema change script
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               authenticationType: 'server'
               serverName: 'tailspin-space-game-sql-dev-$(uniqueSuffix).database.windows.net'
               databaseName: 'tailspindatabase'
@@ -213,7 +213,7 @@ stages:
           steps:
           - task: AzureKeyVault@1
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               keyVaultName: '$(keyVaultName)'
               secretsFilter: '*'
           - download: current
@@ -222,7 +222,7 @@ stages:
           - task: SqlAzureDacpacDeployment@1
             displayName: 'Deploy SQL schema'
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               authenticationType: 'server'
               serverName: 'tailspin-space-game-sql-dev-$(uniqueSuffix).database.windows.net'
               databaseName: 'tailspindatabase'
@@ -279,7 +279,7 @@ stages:
           steps:
           - task: AzureKeyVault@1
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               keyVaultName: '$(keyVaultName)'
               secretsFilter: '*'
           - download: current
@@ -287,13 +287,13 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               appName: 'tailspin-space-game-web-dev-$(uniqueSuffix)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
           - task: AzureAppServiceSettings@1
             displayName: Azure App Service Settings
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              azureSubscription: 'az-rm-devops-node-app-05-yk-rg'
               appName: 'tailspin-space-game-web-dev-$(uniqueSuffix)'
               connectionStrings: |
                 [{ "name": "DefaultConnection","value": "$(connectionString)","type": "SQLAzure","slotSetting": false }]
